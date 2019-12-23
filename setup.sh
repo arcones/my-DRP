@@ -8,6 +8,21 @@
 export DEBIAN_FRONTEND=noninteractive
 export PYTHON_VERSION=3.9.0
 
+# Mode management
+if [ "$1" != "auto" ]; then
+    printf "Falling back to managed mode\n"
+    mode="managed"
+else
+    printf "The mode is auto!!!!\n"
+    mode="auto"
+fi
+
+execute_command_if_required () {
+    if [ "$mode" == "auto" ] || [ read -n1 "Do you want to do $2?" == "y" ]; then
+        execute_command $1 $2
+    fi 
+}
+
 execute_command () {
     echo "$2..." && echo
     eval $1
@@ -19,6 +34,8 @@ execute_command () {
     fi
 }
 
+## BASIC CONFIGURATION - It will be installed in any case
+
 # Basic utilities & libs
 execute_command "apt update -y && apt full-upgrade -y" "updating package index & upgrading dependencies"
 
@@ -28,6 +45,9 @@ execute_command "git --version" "testing git installation"
 
 # VIM config
 execute_command "cp .vimrc ~/.vimrc" "setting vim configuration"
+
+## OPTIONAL CONFIGURATION 1 - It will be installed either if it is auto mode or if required in managed mode.
+## Mostly they are programs used in proffesional environments
 
 # Docker
 execute_command "apt remove -y docker docker-engine docker.io containerd runc" "removing previous installations of docker"
@@ -40,6 +60,9 @@ execute_command "echo 'export PYENV_ROOT=\"$HOME/.pyenv\"' >> ~/.bashrc && echo 
 execute_command "echo -e "if command -v pyenv 1>/dev/null 2>&1; then\n eval \"$(pyenv init -)\"\nfi" >> ~/.bashrc" "updating .bashrc again"
 execute_command "exec '$SHELL' && pyenv install $PYTHON_VERSION" "installing python 3"
 execute_command "pip install -U pip" "upgrading pip"
+
+## OPTIONAL CONFIGURATION 2 - It won't be installed in auto mode. Only if required in managed mode.
+## Mostly they are programs with graphic interface
 
 ### Teams, Slack....
 ## SDKMan
