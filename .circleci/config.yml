@@ -1,0 +1,11 @@
+version: 2.1
+
+jobs:
+  build:
+    steps:
+      - run:
+          name: Docker build
+          command: docker build -f test/Dockerfile -t my-drp-test . 
+      - run:
+          name: Docker run
+          command: docker run --network=host --rm my-drp-test:latest --name my-drp-test
