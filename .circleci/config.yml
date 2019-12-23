@@ -2,7 +2,10 @@ version: 2.1
 
 jobs:
   build:
+    docker:
+      - image: circleci/python:latest
     steps:
+      - checkout
       - run:
           name: Docker build
           command: docker build -f test/Dockerfile -t my-drp-test . 
