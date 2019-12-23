@@ -2,8 +2,7 @@ version: 2.1
 
 jobs:
   build:
-    docker:
-      - image: circleci/python:latest
+    machine: true
     steps:
       - checkout
       - run:
