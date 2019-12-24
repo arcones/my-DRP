@@ -7,7 +7,7 @@ jobs:
       - checkout
       - run:
           name: Docker build
-          command: docker build -f test/Dockerfile -t my-drp-test . 
+          command: docker build my-drp-test . 
       - run:
           name: Docker run
           command: docker run my-drp-test:latest 

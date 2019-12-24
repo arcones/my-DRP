@@ -1,12 +1,18 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Author: Marta Arcones <marta.arcones@gmail.com>
 # This script is intented to prepare any Debian host to work with it
-# Debian minimal installation is recommeded
+# Usage of Debian minimal ISO is recommeded
 # The remaining application & configuration will be done here
 
 export DEBIAN_FRONTEND=noninteractive
 export PYTHON_VERSION=3.9.0
+
+# If the script is not run with sudo, stop & warn
+if [ "$EUID" != 0 ]; then 
+    echo "This script must be run as root"
+    exit 1
+fi
 
 # Mode management
 if [ "$1" != "auto" ]; then
@@ -50,16 +56,16 @@ execute_command "cp .vimrc ~/.vimrc" "setting vim configuration"
 ## Mostly they are programs used in proffesional environments
 
 # Docker
-execute_command "apt remove -y docker docker-engine docker.io containerd runc" "removing previous installations of docker"
-execute_command "apt install -y docker" "installing docker"
-execute_command "docker -v" "testing docker installation"
+execute_command_if_required "apt remove -y docker docker-engine docker.io containerd runc" "removing previous installations of docker"
+execute_command_if_required "apt install -y docker" "installing docker"
+execute_command_if_required "docker -v" "testing docker installation"
 
 # Python & pip 3
-execute_command "git clone https://github.com/pyenv/pyenv.git ~/.pyenv" "cloning pyenv project"
-execute_command "echo 'export PYENV_ROOT=\"$HOME/.pyenv\"' >> ~/.bashrc && echo 'export PATH=\"$PYENV_ROOT/bin:$PATH\"' >> ~/.bashrc" "updating .bashrc"
-execute_command "echo -e "if command -v pyenv 1>/dev/null 2>&1; then\n eval \"$(pyenv init -)\"\nfi" >> ~/.bashrc" "updating .bashrc again"
-execute_command "exec '$SHELL' && pyenv install $PYTHON_VERSION" "installing python 3"
-execute_command "pip install -U pip" "upgrading pip"
+execute_command_if_required "git clone https://github.com/pyenv/pyenv.git ~/.pyenv" "cloning pyenv project"
+execute_command_if_required "echo 'export PYENV_ROOT=\"$HOME/.pyenv\"' >> ~/.bashrc && echo 'export PATH=\"$PYENV_ROOT/bin:$PATH\"' >> ~/.bashrc" "updating .bashrc"
+execute_command_if_required "echo -e "if command -v pyenv 1>/dev/null 2>&1; then\n eval \"$(pyenv init -)\"\nfi" >> ~/.bashrc" "updating .bashrc again"
+execute_command_if_required "exec '$SHELL' && pyenv install $PYTHON_VERSION" "installing python 3"
+execute_command_if_required "pip install -U pip" "upgrading pip"
 
 ## OPTIONAL CONFIGURATION 2 - It won't be installed in auto mode. Only if required in managed mode.
 ## Mostly they are programs with graphic interface
@@ -73,8 +79,9 @@ execute_command "pip install -U pip" "upgrading pip"
 #TFSEC_VERSION="0.13.0"
 #wget https://github.com/liamg/tfsec/releases/download/v$TFSEC_VERSION/tfsec-linux-amd64
 
+## CLEAUP & REBOOT - It will be executed in any case
 # Cleanup
-execute_command "apt full-upgrade -y" "cleaning up not used packages, indexes, etc"
+execute_command "apt autoremove -y && apt autoclean -y" "cleaning up not used packages, indexes, etc"
 
 # Reboot the system for some changes to have effect
 shutdown -r 1 "The system is going to be restarted in one minute!! Run shutdown -c to cancel it"
