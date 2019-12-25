@@ -5,5 +5,6 @@ MAINTAINER Marta Arcones "marta.arcones@gmail.com"
 COPY setup.sh setup.sh
 COPY .vimrc .vimrc
 
-CMD ["sh", "setup.sh auto"]
+ENTRYPOINT ["./setup.sh"]
+CMD ["auto"]
 

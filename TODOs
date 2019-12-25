@@ -2,4 +2,5 @@
 - ssh settup for bitbucket
 - whiteboard list!
 - download personal & proffesional repos on usual dir
+- Script to run on system shutdown: autoremove, autoclean, empty trash bin
 - Move docker libs to docker and python libs to python
