@@ -1,0 +1,39 @@
+---
+  - name: Configuring workstation 
+    hosts: localhost
+    vars_prompt:
+      - name: username
+        prompt: "Username of the main user of the system?"
+        private: no
+        default: "arcones"
+    tasks:
+    - name: Install yum packages
+      yum:
+        update_cache: true
+        name:
+        - git
+        - git-core
+        - wget
+        - tree
+        - curl
+        - firefox
+        - vim
+        - net-tools
+        - docker
+        state: present
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+    - name: "Create folder for personal projects"
+      file:
+        path: /home/{{ username }}/Projects/Personal
+        state: directory
+        owner: "{{ username }}"
+        group: "{{ username }}"
+    - name: "Create folder for proffesional projects"
+      file:
+        path: /home/{{ username }}/Projects/Proffesional
+        state: directory
+        owner: "{{ username }}"
+        group: "{{ username }}"
