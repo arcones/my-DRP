@@ -18,10 +18,6 @@
         - docker
         - python3-pip
         state: latest 
-    - name: Upgrade all packages
-      yum:
-        name: '*'
-        state: latest
     - name: Ensure group docker exists
       group:
         name: docker

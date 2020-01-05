@@ -1,17 +1,6 @@
 version: 2.1
 
 jobs:
-  test:
-    docker:
-      - image: circleci/python:3.8.1
-    steps:
-      - checkout
-      - run:
-          name: Install ansible & dependencies
-          command: sudo apt install -y python-apt && pip3 install ansible --user
-      - run:
-          name: Ansible dry run 
-          command: ansible-playbook DRP.yml --check 
   build:
     machine: true
     steps:
@@ -20,12 +9,8 @@ jobs:
           name: Docker build 
           command:  docker build -t my-drp-ubuntu-test -f ubuntu.Dockerfile .
       - run:
-          name: Docker run 
+          name: Docker check ansible playbook 
+          command: docker run my-drp-ubuntu-test:latest ansible-playbook DRP.yml --check
+      - run:
+          name: Docker run ansible playbook 
           command: docker run my-drp-ubuntu-test:latest ansible-playbook DRP.yml
-workflows:
-  version: 2.1
-  test_and_build:
-    jobs:
-      - test
-      - build 
-
