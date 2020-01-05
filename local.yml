@@ -1,0 +1,47 @@
+---
+  - name: Configuring workstation 
+    hosts: localhost
+    vars_prompt:
+      - name: main_user
+        prompt: "Username of the main user of the system?"
+        private: no
+        default: "arcones"
+    tasks:
+    - name: Install packages
+      package:
+        name:
+        - git
+        - git-core
+        - wget
+        - tree
+        - curl
+        - firefox
+        - vim
+        - net-tools
+        - docker
+        state: latest 
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest
+    - name: Ensure group docker exists
+      group:
+        name: docker
+        state: present
+    - name: Add main user to the system
+      user:
+        name: "{{ main_user }}"
+        uid: 1000
+        groups: admin, docker
+    - name: Create folder for personal projects
+      file:
+        path: /home/"{{ main_user }}"/Projects/Personal
+        state: directory
+        owner: "{{ main_user }}"
+        group: "{{ main_user }}"
+    - name: "Create folder for proffesional projects"
+      file:
+        path: /home/"{{ main_user }}"/Projects/Proffesional
+        state: directory
+        owner: "{{ main_user }}"
+        group: "{{ main_user }}"

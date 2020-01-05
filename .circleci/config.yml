@@ -1,13 +1,28 @@
 version: 2.1
 
 jobs:
+  test:
+    docker:
+      - image: circleci/python:3.8.1
+    steps:
+      - checkout
+      - run:
+          name: Ansible dry run 
+          command: ansible-playbook local.yml --check 
   build:
     machine: true
     steps:
       - checkout
       - run:
-          name: Docker build
-          command: docker build my-drp-test . 
+          name: Docker build 
+          command:  docker build -t my-drp-ubuntu-test -f ubuntu.Dockerfile .
       - run:
-          name: Docker run
-          command: docker run my-drp-test:latest 
+          name: Docker run 
+          command: docker run my-drp-ubuntu-test:latest ansible-playbook local.yml
+workflows:
+  version: 2.1
+  test_and_build:
+    jobs:
+      - test
+      - build 
+
