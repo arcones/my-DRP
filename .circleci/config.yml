@@ -7,8 +7,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install ansible
-          command: pip3 install ansible --user
+          name: Install ansible & dependencies
+          command: apt install -y python-apt && pip3 install ansible --user
       - run:
           name: Ansible dry run 
           command: ansible-playbook DRP.yml --check 
