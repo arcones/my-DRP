@@ -1,11 +1,8 @@
 ---
   - name: Configuring workstation 
     hosts: localhost
-    vars_prompt:
-      - name: main_user
-        prompt: "Username of the main user of the system?"
-        private: no
-        default: "arcones"
+    vars:
+      main_user: arcones
     tasks:
     - name: Install packages
       package:
@@ -19,6 +16,7 @@
         - vim
         - net-tools
         - docker
+        - python3-pip
         state: latest 
     - name: Upgrade all packages
       yum:
@@ -35,13 +33,13 @@
         groups: sudo, docker
     - name: Create folder for personal projects
       file:
-        path: /home/"{{ main_user }}"/Projects/Personal
+        path: /home/{{ main_user }}/Projects/Personal
         state: directory
         owner: "{{ main_user }}"
         group: "{{ main_user }}"
     - name: "Create folder for proffesional projects"
       file:
-        path: /home/"{{ main_user }}"/Projects/Proffesional
+        path: /home/{{ main_user }}/Projects/Professional
         state: directory
         owner: "{{ main_user }}"
         group: "{{ main_user }}"
