@@ -32,7 +32,7 @@
       user:
         name: "{{ main_user }}"
         uid: 1000
-        groups: admin, docker
+        groups: sudo, docker
     - name: Create folder for personal projects
       file:
         path: /home/"{{ main_user }}"/Projects/Personal

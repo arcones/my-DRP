@@ -7,8 +7,11 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install ansible
+          command: pip3 install ansible
+      - run:
           name: Ansible dry run 
-          command: ansible-playbook local.yml --check 
+          command: ansible-playbook DRP.yml --check 
   build:
     machine: true
     steps:
@@ -18,7 +21,7 @@ jobs:
           command:  docker build -t my-drp-ubuntu-test -f ubuntu.Dockerfile .
       - run:
           name: Docker run 
-          command: docker run my-drp-ubuntu-test:latest ansible-playbook local.yml
+          command: docker run my-drp-ubuntu-test:latest ansible-playbook DRP.yml
 workflows:
   version: 2.1
   test_and_build:
