@@ -8,7 +8,7 @@ jobs:
       - checkout
       - run:
           name: Install ansible & dependencies
-          command: apt install -y python-apt && pip3 install ansible --user
+          command: sudo apt install -y python-apt && pip3 install ansible --user
       - run:
           name: Ansible dry run 
           command: ansible-playbook DRP.yml --check 
