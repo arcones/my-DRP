@@ -28,6 +28,7 @@ Its current status is [![CircleCI](https://circleci.com/gh/arcones/my-DRP.svg?st
 
 # Roadmap :motorway:
 - Add raspbian docker image (for the raspis)
+- Add to the CI script checks that verify that the packages has been installed
 - Work on the playbook:
   - ssh setup for github
   - ssh setup for bitbucket (with conditional logic... split all job related to other play or even playbook? and run it conditionally?)
