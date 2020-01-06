@@ -4,8 +4,7 @@
     vars:
       main_user: arcones
     tasks:
-    - name: Install packages
-      package:
+    - package:
         name:
         - git
         - git-core
@@ -18,23 +17,19 @@
         - docker
         - python3-pip
         state: latest 
-    - name: Ensure group docker exists
-      group:
+    - group:
         name: docker
         state: present
-    - name: Add main user to the system
-      user:
+    - user:
         name: "{{ main_user }}"
         uid: 1000
         groups: sudo, docker
-    - name: Create folder for personal projects
-      file:
+    - file:
         path: /home/{{ main_user }}/Projects/Personal
         state: directory
         owner: "{{ main_user }}"
         group: "{{ main_user }}"
-    - name: "Create folder for proffesional projects"
-      file:
+    - file:
         path: /home/{{ main_user }}/Projects/Professional
         state: directory
         owner: "{{ main_user }}"

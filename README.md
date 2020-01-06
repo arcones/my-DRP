@@ -17,7 +17,7 @@ There is a Dockerfile to build an image that can be used to test the playbook wi
 You can build the image & run the container with:
 
 ```
-docker build -t my-drp-ubuntu-test -f ubuntu.Dockerfile . && docker run my-drp-ubuntu-test:latest ansible-playbook DRP.yml 
+docker build -t my-drp-ubuntu-test -f tests/ubuntu.Dockerfile . && docker run my-drp-ubuntu-test:latest ansible-playbook DRP.yml 
 ```
 
 If it ends succesfully, the DRP playbook is working well.
