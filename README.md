@@ -36,4 +36,6 @@ Its current status is [![CircleCI](https://circleci.com/gh/arcones/my-DRP.svg?st
   - download personal & professional repos on usual dirs
   - rewrite system shutdown: autoremove, autoclean, empty trash bin, clean /tmp folder and any private data
 - Create a packer :package: image at the end of the CircleCI build with my custom system ready to launch
-
+- Move to travisCI as it is the most common CI server with ansible
+- Check this https://docs.ansible.com/ansible-lint/
+- Check modules already build in ansible galaxy
