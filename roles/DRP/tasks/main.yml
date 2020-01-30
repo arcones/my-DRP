@@ -33,12 +33,11 @@
       - 'net-tools'
       - 'python3-pip'
 
-- name:
+- name: Modify User Arcones
   user:
-    name: "arcones"
+    name: arcones
     comment: Marta Arcones
     shell: /bin/bash
-    uid: 2001
     groups: sudo, docker
     append: yes
 
