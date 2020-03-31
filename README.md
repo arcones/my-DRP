@@ -28,7 +28,7 @@ If it ends succesfully, the DRP playbook is working well.
 
 Also, a CircleCI build :arrows_counterclockwise: is configured to test the playbook in the container on each push.
 
-Its current status is [![CircleCI](https://circleci.com/gh/arcones/my-DRP.svg?style=svg)](https://circleci.com/gh/arcones/my-DRP)
+Its current status is [![CircleCI](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://circleci.com/gh/arcones/my-DRP)
 
 # Roadmap :motorway:
 - Add raspbian docker image (for the raspis)
