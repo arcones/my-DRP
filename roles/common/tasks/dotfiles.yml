@@ -1,0 +1,10 @@
+---
+ - name: Manage dotfiles
+   copy:
+     src: "files/{{ item }}"
+     dest: "/home/{{ user }}/{{ item }}"
+     mode: '0611'
+     owner: "{{ user }}"
+     group: "{{ user }}"
+   with_items:
+     - ".zshrc"

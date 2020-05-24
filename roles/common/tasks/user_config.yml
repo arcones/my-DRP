@@ -1,0 +1,17 @@
+---
+- name: Modify User Arcones
+  user:
+    name: "{{ user }}"
+    comment: Marta Arcones
+    shell: /bin/zsh
+    groups: sudo
+    append: yes
+
+- name: Create directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0711'
+  with_items:
+    - "/home/{{ user }}/code/{{ user }}"
+    - "/home/{{ user }}/code/zooplus"
