@@ -47,8 +47,8 @@
     state: directory
     mode: 0755
   with_items:
-    - "/home/arcones/Projects/Personal"
-    - "/home/arcones/Projects/Professional"
+    - "/home/arcones/Projects/Per"
+    - "/home/arcones/Projects/Prof"
 
 # - name: Manage dotfiles
 #   copy:
