@@ -19,6 +19,7 @@
       - 'tmux'
       - 'snapd'
       - 'python3-apt'
+      - 'ansible'
 
 - name: upgrade all packages to the latest version
   apt:
