@@ -1,0 +1,19 @@
+---
+
+- name: check if globalprotect is installed
+  command: dpkg-query -W globalprotect
+  register: globalprotect_check
+  failed_when: globalprotect_check.rc > 1
+  changed_when: globalprotect_check.rc == 1
+
+- name: copy globalprotect package
+  copy:
+    src: files/{{ globalprotect_package }}
+    dest: /home/{{ user }}/SW/{{ globalprotect_package }}
+  when: postman_check.rc == 1
+
+- name: install globalprotect
+  apt:
+    deb: /home/{{ user }}/SW/{{ globalprotect_package }}
+    sudo: true
+  when: globalprotect_check.rc == 1

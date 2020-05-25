@@ -1,0 +1,4 @@
+---
+
+- include: globalprotect.yml
+- include: teams.yml

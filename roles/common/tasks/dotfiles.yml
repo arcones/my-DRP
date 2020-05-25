@@ -1,5 +1,6 @@
 ---
- - name: Manage dotfiles
+
+ - name: copy dotfiles
    copy:
      src: "files/{{ item }}"
      dest: "/home/{{ user }}/{{ item }}"

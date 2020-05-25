@@ -1,17 +1,11 @@
 ---
-- name: Modify User Arcones
-  user:
-    name: "{{ user }}"
-    comment: Marta Arcones
-    shell: /bin/zsh
-    groups: sudo
-    append: yes
 
-- name: Create directories
+- name: create common folders
   file:
     path: "{{ item }}"
     state: directory
     mode: '0711'
   with_items:
-    - "/home/{{ user }}/code/{{ user }}"
-    - "/home/{{ user }}/code/zooplus"
+    - "/home/{{ user }}/Code/Pers"
+    - "/home/{{ user }}/Code/Prof"
+    - "/home/{{ user }}/SW"

@@ -1,16 +1,30 @@
 ---
-- name: Install packages
+
+- name: update repositories
+  apt:
+    update_cache: yes
+
+- name: install packages
   apt:
     state: present
-    update_cache: True
     name:
       - 'git'
       - 'git-core'
       - 'wget'
       - 'tree'
       - 'curl'
-      - 'firefox'
       - 'vim'
       - 'net-tools'
       - 'zsh'
       - 'tmux'
+      - 'snapd'
+      - 'python3-apt'
+
+- name: upgrade all packages to the latest version
+  apt:
+    name: "*"
+    state: latest
+
+- name: update all packages to the latest version
+  apt:
+    upgrade: dist

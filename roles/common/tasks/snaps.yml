@@ -1,0 +1,24 @@
+---
+
+- name: install snaps
+  snap:
+    name:
+      - slack
+        #      - beekeeper-studio
+        #      - firefox
+        #      - vlc
+        #      - postman
+        #      - zoom-client
+        #      - kubectl
+        #      - skype
+        #      - chromium
+        #      - gnome-calculator
+        #      - evince
+        #      - sublime-text
+        #      - onlyoffice-ds
+        #      - canonical-livepatch
+        #      - ktube-media-downloader
+        #      - spotify
+        #    channel: latest/stable
+
+

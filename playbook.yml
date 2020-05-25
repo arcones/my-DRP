@@ -1,7 +1,10 @@
 ---
+
 - hosts: all
   become: yes
   roles:
-    - role: common
+    - common
+    - zooplus
   vars:
     user: arcones
+    globalprotect_package: GlobalProtect_deb-5.1.0.0-101.deb
