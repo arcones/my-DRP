@@ -14,5 +14,3 @@ script:
     - ansible-lint playbook.yml
     - ansible-playbook --version
     - ansible-playbook -i inventory playbook.yml
-    - docker build -t my-drp-ubuntu-test .
-    - docker run my-drp-ubuntu-test:latest ansible-playbook -i inventory playbook.yml
