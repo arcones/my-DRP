@@ -8,3 +8,4 @@
 - name: change default shell to zsh
   shell:
     cmd: chsh -s $(which zsh)
+    # This is still not working!
