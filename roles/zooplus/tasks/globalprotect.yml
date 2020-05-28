@@ -10,10 +10,8 @@
   copy:
     src: files/{{ globalprotect_package }}
     dest: /home/{{ user }}/SW/{{ globalprotect_package }}
-  when: postman_check.rc == 1
+  when: globalprotect_check.rc == 1
 
 - name: install globalprotect
-  apt:
-    deb: /home/{{ user }}/SW/{{ globalprotect_package }}
-    sudo: true
+  shell: dpkg -i /home/{{ user }}/SW/{{ globalprotect_package }}
   when: globalprotect_check.rc == 1

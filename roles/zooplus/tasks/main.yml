@@ -1,4 +1,7 @@
 ---
 
+- include: user_config.yml
 - include: globalprotect.yml
+  vars:
+    globalprotect_package: GlobalProtect_deb-5.1.0.0-101.deb
 - include: teams.yml

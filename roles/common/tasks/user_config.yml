@@ -4,8 +4,9 @@
   file:
     path: "{{ item }}"
     state: directory
-    mode: '0711'
+    mode: '0744'
+    owner: "{{ user }}"
+    group: "{{ user }}"
   with_items:
-    - "/home/{{ user }}/Code/Pers"
-    - "/home/{{ user }}/Code/Prof"
+    - "/home/{{ user }}/code/arcones"
     - "/home/{{ user }}/SW"

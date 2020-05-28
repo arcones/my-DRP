@@ -12,8 +12,6 @@
     dest: /home/{{ user }}/SW/teams.deb
   when: teams_check.rc == 1
 
-- name: install teams
-  apt:
-    deb: /home/{{ user }}/SW/teams.deb
-    sudo: true
+- name: install globalprotect
+  shell: dpkg -i /home/{{ user }}/SW/teams.deb
   when: teams_check.rc == 1

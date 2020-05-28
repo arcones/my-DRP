@@ -20,6 +20,7 @@
       - 'snapd'
       - 'python3-apt'
       - 'ansible'
+      - 'net-tools'
 
 - name: upgrade all packages to the latest version
   apt:
