@@ -1,0 +1,25 @@
+name: tools
+channels:
+  - https://bin.private.zooplus.net/artifactory/conda-forge
+  - https://bin.private.zooplus.net/artifactory/conda-free
+  - https://bin.private.zooplus.net/artifactory/conda-main
+  - eumetsat
+  - mgckind
+dependencies:
+  - python=3.9
+  - ansible=2.9.*
+  - autoconf
+  - automake
+  - awscli
+  - cx_oracle
+  - jq
+  - pip
+  - pipenv
+  - openjdk=12
+  - openssl
+  - m4
+  - make
+  - maven
+  - pip:
+      - mpr
+      - cafe-cake

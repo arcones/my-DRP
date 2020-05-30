@@ -19,6 +19,7 @@
       - 'tmux'
       - 'snapd'
       - 'python3-apt'
+      - 'python-psutil'
       - 'ansible'
       - 'net-tools'
 

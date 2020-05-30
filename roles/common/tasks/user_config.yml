@@ -10,3 +10,18 @@
   with_items:
     - "/home/{{ user }}/code/arcones"
     - "/home/{{ user }}/SW"
+
+
+- name: copy wallpaper file
+  copy:
+    src: files/diverse_sponge_bob.jpg
+    dest: "/home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg"
+    mode: "0744"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+
+- name: set wallpaper
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg'"
