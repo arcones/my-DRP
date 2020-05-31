@@ -10,7 +10,7 @@ fi
 apt install -y openssh-server
 
 # Ensure ssh is running
-systemctl status ssh
+systemctl status ssh --no-pager
 if [ $? -eq 0 ]; then
     echo "ssh server is running"
 else

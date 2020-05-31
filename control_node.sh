@@ -7,7 +7,10 @@ if [ "$EUID" != 0 ]; then
 fi
 
 # Append to hosts file the IP of the target
-echo "192.168.0.11 towanda"
+echo "192.168.0.11 towanda" >> /etc/hosts
+
+systemctl stop NetworkManager.service
+systemctl start NetworkManager.service
 
 # Send ssh key to the target
-ssh-copy-id towanda
+sudo -u arcones -- ssh-copy-id towanda
