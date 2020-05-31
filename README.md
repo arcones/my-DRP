@@ -8,14 +8,17 @@ It uses **ansible** to install packages and configure the system as I like :woma
 
 ## Requirements :warning:
 
-- Target host should be an Ubuntu OS
-- It is assumed that user `arcones` is already created in the target host
-- When running ansible remotely, only `python3-pip python3-apt` are required (Recommended)
-- When running ansible locally, `ansible` package is also required
+- [Target node] Ubuntu OS is installed with the user `arcones`
+- [Target node] The script `target_node.sh` has been run succesfully
 
-## Execute this playbook
+- [Control node] The user that will be used will be `arcones`
+- [Control node] An ssh key is assigned to `arcones` user
+- [Control node] Ansible is installed, as well as `python3` and `ssh`
+- [Control node] The script `control_node.sh` has been run succesfully
+
+## Execute the playbook
 ```
-ansible-playbook playbook.yml -i inventory -u arcones
+ansible-playbook playbook.yml -i hosts -u arcones
 ```
 
-Also, a TravisCI build is triggered on each push, its current `status` on master branch is [![Build Status](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://travis-ci.org/arcones/my-DRP)
+[![Build Status](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://travis-ci.org/arcones/my-DRP)
