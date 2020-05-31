@@ -4,7 +4,7 @@
 - name: Check if awscli is installed
   stat:
     path: /usr/local/aws-cli
-  register: awscli_existence_check
+  register: awscli_existence
 
 - name: Create directory where awscli will be downloaded
   file:
@@ -13,7 +13,7 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: '0744'
-  when: awscli_existence_check is failed
+  when: not awscli_existence.stat.exists
 
 - name: Download & unpack awscli installation script
   unarchive:
@@ -21,14 +21,14 @@
     dest: "/home/{{ user }}/SW/awscliv2"
     owner: "{{ user }}"
     remote_src: yes
-  when: awscli_existence_check is failed
+  when: not awscli_existence.stat.exists
 
 - name: Install awscli
   command: sh /home/{{ user }}/SW/awscliv2/aws/install
-  register: awscli_installation_check
-  when: awscli_existence_check is failed
+  register: awscli_installation
+  when: not awscli_existence.stat.exists
 
 - name: Check awscli installation
   command: aws --version
-  register: awscli_version_check
-  when: awscli_installation_check is succeeded
+  register: awscli_version
+  when: awscli_installation is succeeded

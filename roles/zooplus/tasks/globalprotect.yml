@@ -3,15 +3,21 @@
 - name: Check if globalprotect client is installed
   stat:
     path: /usr/bin/globalprotect
-  register: globalprotect_existence_check
+  register: globalprotect_existence
 
 - name: Copy globalprotect package
   copy:
     src: files/{{ globalprotect_package }}
     dest: /home/{{ user }}/SW/{{ globalprotect_package }}
-  when: globalprotect_existence_check is failed
+  when: not globalprotect_existence.stat.exists
 
 - name: Install globalprotect
-  apt:
-    deb: "/home/{{ user }}/SW/{{ globalprotect_package }}"
-  when: globalprotect_existence_check is failed
+  command: "dpkg -i /home/{{ user }}/SW/{{ globalprotect_package }}"
+  register: globalprotect_installation_check
+  when: not globalprotect_existence.stat.exists
+
+- name: Check globalprotect installation
+  command: globalprotect show --version
+  failed_when: not 'GlobalProtect' in globalprotect_version.stdout
+  register: globalprotect_version
+  when: globalprotect_installation_check is succeeded

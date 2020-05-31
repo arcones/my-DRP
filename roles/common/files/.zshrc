@@ -14,7 +14,7 @@ ZSH_THEME="random"
 # Setting this variable when ZSHTHEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-ZSH_THEME_RANDOM_CANDIDATES=("fletcherm" "still-filling" "dpoggi" "blinks" "frisk" "gianu" "fox" "half-life" "dogenpunk" "pygmalion" "norm") 
+ZSH_THEME_RANDOM_CANDIDATES=("fletcherm" "dpoggi" "blinks" "frisk" "gianu" "fox" "half-life" "dogenpunk" "pygmalion" "norm")
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -100,6 +100,9 @@ alias gt="gb --set-upstream-to=origin/\$\(git branch | sed -n -e 's/^\* \(.*\)/\
 alias ccat='cat'
 alias cless='less'
 
+# Tfenv Path
+export PATH="$HOME/.tfenv/bin:$PATH"
+
 # Miniconda
 export PATH=$HOME/miniconda3/bin:$PATH
 # >>> conda initialize >>>
@@ -116,3 +119,8 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# SDKMan
+export SDKMAN_DIR="/home/arcones/.sdkman"
+[[ -s "/home/arcones/.sdkman/bin/sdkman-init.sh" ]] && source "/home/arcones/.sdkman/bin/sdkman-init.sh"
+

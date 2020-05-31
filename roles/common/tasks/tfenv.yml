@@ -1,0 +1,18 @@
+---
+
+- name: Check if tfenv is installed 
+  stat:
+    path: "/home/{{ user }}/.tfenv/bin/terraform"
+  register: tfenv_existence
+
+- name: Download tfenv
+  git:
+    repo: 'https://github.com/tfutils/tfenv.git'
+    dest: "/home/{{ user }}/.tfenv"
+    version: master
+  register: tfenv_installation
+
+- name: Check tfenv installation
+  command: /home/{{ user }}/.tfenv/bin/tfenv --version
+  register: tfenv_version
+  when: tfenv_installation is succeeded

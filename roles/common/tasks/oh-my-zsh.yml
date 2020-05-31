@@ -5,3 +5,10 @@
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: "/home/{{ user }}/.oh-my-zsh"
     version: master
+
+- name: Give permissions to the user
+  file:
+    path: "/home/{{ user }}/.oh-my-zsh"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '1744'

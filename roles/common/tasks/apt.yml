@@ -20,15 +20,11 @@
       - 'snapd'
       - 'python3-apt'
       - 'python3-pip'
-      - 'python-psutil'
       - 'ansible'
+      - 'xz-utils'
       - 'net-tools'
-
-- name: Upgrade all packages to the latest version
-  apt:
-    name: "*"
-    state: latest
+      - 'fortune'
 
 - name: Update all packages to the latest version
   apt:
-    upgrade: dist
+    upgrade: full

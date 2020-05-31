@@ -1,0 +1,24 @@
+---
+
+- name: Check if maven is installed
+  stat:
+    path: /home/{{ user }}/.sdkman/candidates/maven
+  register: maven_existence
+
+- name: Install maven 
+  become: yes
+  become_user: "{{ user }}"
+  shell: "source /home/{{ user }}/.zshrc && sdk install maven"
+  args:
+    executable: /bin/zsh
+  register: maven_installation_check
+  when: not maven_existence.stat.exists
+
+- name: Check maven installation
+  become: yes
+  become_user: "{{ user }}"
+  shell: "source /home/{{ user }}/.zshrc && mvn --version"
+  args:
+    executable: /bin/zsh
+  when: maven_installation_check is succeeded
+

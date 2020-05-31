@@ -24,6 +24,9 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
+- pip:
+    name: psutil
+
 - name: Set wallpaper
   become: yes
   become_user: "{{ user }}"

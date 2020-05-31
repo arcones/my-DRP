@@ -1,0 +1,27 @@
+---
+
+- name: Check if sdkman is installed
+  stat:
+    path: /home/{{ user }}/.sdkman
+  register: sdkman_existence
+
+- name: Download sdkman installation script
+  get_url:
+    url: https://get.sdkman.io
+    dest: /home/{{ user }}/SW/sdkman.sh
+    mode: '0744'
+
+- name: Install sdkman
+  become: yes
+  become_user: "{{ user }}"
+  command: "zsh /home/{{ user }}/SW/sdkman.sh"
+  register: sdkman_installation_check
+  when: not sdkman_existence.stat.exists
+
+- name: Check sdkman installation
+  become: yes
+  become_user: "{{ user }}"
+  shell: "source /home/{{ user }}/.zshrc && sdk version"
+  args:
+    executable: /bin/zsh
+  when: sdkman_installation_check is succeeded
