@@ -1,6 +1,11 @@
 ---
 
-- name: create common folders
+- name: Set default shell for the user
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+
+- name: Create common folders
   file:
     path: "{{ item }}"
     state: directory
@@ -11,8 +16,7 @@
     - "/home/{{ user }}/code/arcones"
     - "/home/{{ user }}/SW"
 
-
-- name: copy wallpaper file
+- name: Copy wallpaper file
   copy:
     src: files/diverse_sponge_bob.jpg
     dest: "/home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg"
@@ -20,7 +24,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
-- name: set wallpaper
+- name: Set wallpaper
+  become: yes
   become_user: "{{ user }}"
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"

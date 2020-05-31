@@ -21,5 +21,6 @@ ansible-playbook playbook.yml -i inventory -u arcones
 Also, a TravisCI build is triggered on each push, its current `status` on master branch is [![Build Status](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://travis-ci.org/arcones/my-DRP)
 
 ## TODO
-- Missing tools: terraform & tfenv, mpr, miniconda, aws-cli, apache directory studio
-- Missing config: conda base yml, ssh config, repositories
+- Missing tools: terraform & tfenv, apache directory studio
+- Missing config: ssh config, repositories, motd, minimum version of zsh history, customize tray
+- Missing: set nice failed_when, changed_when, etc on shell like modules, normalize registers/checks sytnax, check with Vagrant, ansible-lint

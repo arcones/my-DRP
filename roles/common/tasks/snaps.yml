@@ -1,6 +1,6 @@
 ---
 
-- name: install snaps
+- name: Install snaps
   snap:
     name:
       - beekeeper-studio
@@ -16,7 +16,7 @@
       - ktube-media-downloader
       - spotify
 
-- name: install snaps
+- name: Install classic snaps
   snap:
     name:
       - slack

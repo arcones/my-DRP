@@ -1,4 +1,4 @@
-name: tools
+name: zooplus
 channels:
   - https://bin.private.zooplus.net/artifactory/conda-forge
   - https://bin.private.zooplus.net/artifactory/conda-free

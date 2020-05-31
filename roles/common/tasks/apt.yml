@@ -1,10 +1,10 @@
 ---
 
-- name: update repositories
+- name: Update repositories
   apt:
     update_cache: yes
 
-- name: install packages
+- name: Install packages
   apt:
     state: present
     name:
@@ -19,15 +19,16 @@
       - 'tmux'
       - 'snapd'
       - 'python3-apt'
+      - 'python3-pip'
       - 'python-psutil'
       - 'ansible'
       - 'net-tools'
 
-- name: upgrade all packages to the latest version
+- name: Upgrade all packages to the latest version
   apt:
     name: "*"
     state: latest
 
-- name: update all packages to the latest version
+- name: Update all packages to the latest version
   apt:
     upgrade: dist

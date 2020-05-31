@@ -1,17 +1,18 @@
 ---
 
-- name: check if teams is installed
-  command: dpkg-query -W teams
-  register: teams_check
-  failed_when: teams_check.rc > 1
-  changed_when: teams_check.rc == 1
+- name: Check if teams is installed
+  stat:
+    path: /usr/bin/teams
+  register: teams_existence_check
 
-- name: download teams package
+- name: Download teams package
   get_url:
     url: https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
     dest: /home/{{ user }}/SW/teams.deb
-  when: teams_check.rc == 1
+  when: teams_existence_check is failed
 
-- name: install teams
-  shell: dpkg -i /home/{{ user }}/SW/teams.deb
-  when: teams_check.rc == 1
+- name: Install teams
+  apt:
+    deb: /home/{{ user }}/SW/teams.deb
+  when: teams_existence_check is failed
+

@@ -1,6 +1,6 @@
 ---
 
- - name: copy dotfiles
+ - name: Copy dotfiles
    copy:
      src: "files/{{ item }}"
      dest: "/home/{{ user }}/{{ item }}"

@@ -1,4 +1,3 @@
-
 - name: Copy environment file
   copy:
     src: files/zooplus_conda_env.yml
@@ -6,6 +5,3 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0744"
-
-- name: configure conda base environment
-  shell: conda env create -f $HOME/miniconda3/zooplus_conda_env.yml

@@ -14,8 +14,7 @@ ZSH_THEME="random"
 # Setting this variable when ZSHTHEME=random will cause zsh to load
 # a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
 # If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=("fletcherm" "still-filling" "dpoggi" "blinks" "frisk" "gianu" "fox" "half-life" "dogenpunk" "pygmalion") 
-
+ZSH_THEME_RANDOM_CANDIDATES=("fletcherm" "still-filling" "dpoggi" "blinks" "frisk" "gianu" "fox" "half-life" "dogenpunk" "pygmalion" "norm") 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -68,8 +67,8 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pyenv pylint python terraform aws docker emoji emoji-clock git-auto-fetch git-escape-magic git-extras git-flow-avh git-remote-branch git-prompt colorize colored-man-pages)
-
+plugins=(git emoji aws docker battery chucknorris colorize copydir copyfile docker-compose extract fastfile pip sudo terraform z)
+RPROMPT='$(battery_pct_prompt)'
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -96,3 +95,24 @@ alias gall='git add --all'
 alias gin='git init'
 alias gpshb="gpsh -u origin \$\(git branch | sed -n -e 's/^\* \(.*\)/\1/p'\)"
 alias gt="gb --set-upstream-to=origin/\$\(git branch | sed -n -e 's/^\* \(.*\)/\1/p'\)"
+
+# Colorize common commands
+alias ccat='cat'
+alias cless='less'
+
+# Miniconda
+export PATH=$HOME/miniconda3/bin:$PATH
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/arcones/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/arcones/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/arcones/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/arcones/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<

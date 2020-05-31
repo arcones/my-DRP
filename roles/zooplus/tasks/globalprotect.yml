@@ -1,17 +1,17 @@
 ---
 
-- name: check if globalprotect is installed
-  command: dpkg-query -W globalprotect
-  register: globalprotect_check
-  failed_when: globalprotect_check.rc > 1
-  changed_when: globalprotect_check.rc == 1
+- name: Check if globalprotect client is installed
+  stat:
+    path: /usr/bin/globalprotect
+  register: globalprotect_existence_check
 
-- name: copy globalprotect package
+- name: Copy globalprotect package
   copy:
     src: files/{{ globalprotect_package }}
     dest: /home/{{ user }}/SW/{{ globalprotect_package }}
-  when: globalprotect_check.rc == 1
+  when: globalprotect_existence_check is failed
 
-- name: install globalprotect
-  shell: dpkg -i /home/{{ user }}/SW/{{ globalprotect_package }}
-  when: globalprotect_check.rc == 1
+- name: Install globalprotect
+  apt:
+    deb: "/home/{{ user }}/SW/{{ globalprotect_package }}"
+  when: globalprotect_existence_check is failed
