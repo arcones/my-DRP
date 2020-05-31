@@ -5,7 +5,7 @@
     path: /home/{{ user }}/.sdkman/candidates/java
   register: java_existence
 
-- name: Install java 
+- name: Install java
   become: yes
   become_user: "{{ user }}"
   shell: "source /home/{{ user }}/.zshrc && sdk install java"

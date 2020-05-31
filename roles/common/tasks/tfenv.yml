@@ -1,6 +1,6 @@
 ---
 
-- name: Check if tfenv is installed 
+- name: Check if tfenv is installed
   stat:
     path: "/home/{{ user }}/.tfenv/bin/terraform"
   register: tfenv_existence

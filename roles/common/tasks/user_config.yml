@@ -24,7 +24,8 @@
     owner: "{{ user }}"
     group: "{{ user }}"
 
-- pip:
+- name: Install pip packages
+  pip:
     name: psutil
 
 - name: Set wallpaper

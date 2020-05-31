@@ -5,7 +5,7 @@
     path: /home/{{ user }}/.sdkman/candidates/maven
   register: maven_existence
 
-- name: Install maven 
+- name: Install maven
   become: yes
   become_user: "{{ user }}"
   shell: "source /home/{{ user }}/.zshrc && sdk install maven"

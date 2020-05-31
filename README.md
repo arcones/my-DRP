@@ -19,9 +19,3 @@ ansible-playbook playbook.yml -i inventory -u arcones
 ```
 
 Also, a TravisCI build is triggered on each push, its current `status` on master branch is [![Build Status](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://travis-ci.org/arcones/my-DRP)
-
-## TODO
-- Missing config: ssh config, repositories (github & bitbucket), motd, minimum version of zsh history, customize tray, canonical livepath config, firefox sync, wifi config
-- Missing: set nice failed_when, changed_when, etc on shell like modules, normalize registers/checks syntax, check with Vagrant, ansible-lint
-- Missing: add validity, echo versions (verbosity)
-- Split in blocks zshrc by responsibility
