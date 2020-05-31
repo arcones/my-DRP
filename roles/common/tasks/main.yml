@@ -3,5 +3,5 @@
 - include: apt.yml
 - include: snaps.yml
 - include: user_config.yml
-- include: oh-my-zsh.yml
+- include: conda.yml
 - include: dotfiles.yml
