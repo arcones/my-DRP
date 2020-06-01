@@ -5,6 +5,7 @@
     repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
     dest: "/home/{{ user }}/.oh-my-zsh"
     version: master
+    update: no
 
 - name: Give permissions to the user
   file:
