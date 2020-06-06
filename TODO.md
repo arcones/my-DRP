@@ -4,3 +4,4 @@
 - Pending in existing code: set nice failed_when, changed_when, etc on shell like modules, normalize registers/checks syntax, validations, echo versions (verbosity)
 - Templatize zshrc
 - Get a .deb package from globalprotect that can be installed with apt
+- ansible-lint
