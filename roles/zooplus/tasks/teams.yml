@@ -1,22 +1,27 @@
 ---
 
-- name: Check if teams is installed
-  stat:
-    path: /usr/bin/teams
-  register: teams_existence
+- name: Add microsoft apt-key
+  apt_key: 
+    url: https://packages.microsoft.com/keys/microsoft.asc 
+    state: present 
+  tags:
+    - zooplus
+    - teams
 
-- name: Download teams package
-  get_url:
-    url: https://go.microsoft.com/fwlink/p/?linkid=2112886&clcid=0x409&culture=en-us&country=us
-    dest: /home/{{ user }}/SW/teams.deb
-  when: not teams_existence.stat.exists
+- name: Add teams repository
+  apt_repository:
+    repo: deb [arch=amd64] https://packages.microsoft.com/repos/ms-teams stable main 
+    state: present
+  tags:
+    - zooplus
+    - teams
 
-- name: Install teams
+- name: Install team package
   apt:
-    deb: /home/{{ user }}/SW/teams.deb
-  register: teams_installation_check
-  when: not teams_existence.stat.exists
-
-- name: Check teams installation
-  command: teams
-  when: teams_installation_check is succeeded
+    state: present
+    update_cache: yes
+    name:
+      - 'teams'
+  tags:
+    - zooplus
+    - teams

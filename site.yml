@@ -6,5 +6,4 @@
     - common
     - zooplus
   vars:
-    user: arcones
     company: zooplus

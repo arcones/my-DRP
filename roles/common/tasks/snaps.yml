@@ -15,6 +15,9 @@
       - canonical-livepatch
       - ktube-media-downloader
       - spotify
+  tags:
+    - common
+    - snaps 
 
 - name: Install classic snaps
   snap:
@@ -24,3 +27,6 @@
       - sublime-text
       - kubectl
     classic: yes
+  tags:
+    - common
+    - snaps 

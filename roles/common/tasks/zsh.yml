@@ -1,0 +1,43 @@
+---
+
+- name: Copy dotfiles
+  copy:
+    src: "files/{{ item }}"
+    dest: "/home/{{ user }}/{{ item }}"
+    mode: '0611'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - ".zshrc"
+  tags:
+    - common
+    - zsh
+
+- name: Download oh-my-zsh
+  git:
+    repo: 'https://github.com/ohmyzsh/ohmyzsh.git'
+    dest: "/home/{{ user }}/.oh-my-zsh"
+    version: master
+    force: yes
+  tags:
+    - common
+    - zsh
+
+- name: Give permissions on the folder 
+  file:
+    path: "/home/{{ user }}/.oh-my-zsh"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: '0755'
+    recurse: yes
+  tags:
+    - common
+    - zsh
+
+- name: Set default shell for the user
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+  tags:
+    - common
+    - zsh 

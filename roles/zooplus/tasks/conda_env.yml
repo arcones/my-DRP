@@ -5,3 +5,6 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0744"
+  tags:
+    - zooplus 
+    - conda_env 

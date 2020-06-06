@@ -82,20 +82,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Git aliases
-alias gst="git status"
-alias gpll="git pull"
-alias gpsh="git push"
-alias gb="git branch"
-alias gco="git checkout"
-alias gdf="git diff"
-alias gci="git commit"
-alias gad='git add'
-alias gall='git add --all'
-alias gin='git init'
-alias gpshb="gpsh -u origin \$\(git branch | sed -n -e 's/^\* \(.*\)/\1/p'\)"
-alias gt="gb --set-upstream-to=origin/\$\(git branch | sed -n -e 's/^\* \(.*\)/\1/p'\)"
-
 # Colorize common commands
 alias ccat='cat'
 alias cless='less'

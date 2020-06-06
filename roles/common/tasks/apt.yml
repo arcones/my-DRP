@@ -1,12 +1,9 @@
 ---
 
-- name: Update repositories
-  apt:
-    update_cache: yes
-
 - name: Install packages
   apt:
     state: present
+    update_cache: yes
     name:
       - 'git'
       - 'git-core'
@@ -24,7 +21,13 @@
       - 'xz-utils'
       - 'net-tools'
       - 'fortune'
+  tags:
+    - common
+    - apt
 
 - name: Update all packages to the latest version
   apt:
     upgrade: full
+  tags:
+    - common
+    - apt

@@ -18,7 +18,7 @@ It uses **ansible** to install packages and configure the system as I like :woma
 
 ## Execute the playbook
 ```
-ansible-playbook playbook.yml -i hosts -u arcones
+ansible-playbook site.yml -i hosts -u arcones -e {{ username }}
 ```
 
 [![Build Status](https://travis-ci.org/arcones/my-DRP.svg?branch=master)](https://travis-ci.org/arcones/my-DRP)

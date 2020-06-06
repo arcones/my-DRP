@@ -1,10 +1,5 @@
 ---
 
-- name: Set default shell for the user
-  user:
-    name: "{{ user }}"
-    shell: /bin/zsh
-
 - name: Create common folders
   file:
     path: "{{ item }}"
@@ -13,8 +8,11 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   with_items:
-    - "/home/{{ user }}/code/arcones"
-    - "/home/{{ user }}/SW"
+    - "/home/{{ user }}/code/github"
+    - "/home/{{ user }}/code/{{ company }}"
+  tags:
+    - common
+    - user_config
 
 - name: Copy wallpaper file
   copy:
@@ -23,10 +21,9 @@
     mode: "0744"
     owner: "{{ user }}"
     group: "{{ user }}"
-
-- name: Install pip packages
-  pip:
-    name: psutil
+  tags:
+    - common
+    - user_config
 
 - name: Set wallpaper
   become: yes
@@ -34,3 +31,6 @@
   dconf:
     key: "/org/gnome/desktop/background/picture-uri"
     value: "'file:///home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg'"
+  tags:
+    - common
+    - user_config

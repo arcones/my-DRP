@@ -1,9 +1,9 @@
 ---
 
 - include: apt.yml
-- include: oh-my-zsh.yml
+- include: zsh.yml
+- include: pip.yml
 - include: user_config.yml
-- include: dotfiles.yml
 - include: conda.yml
 - include: awscli.yml
 - include: snaps.yml
