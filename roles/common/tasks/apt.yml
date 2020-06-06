@@ -1,0 +1,33 @@
+---
+
+- name: Install packages
+  apt:
+    state: present
+    update_cache: yes
+    name:
+      - 'git'
+      - 'git-core'
+      - 'wget'
+      - 'tree'
+      - 'curl'
+      - 'vim'
+      - 'net-tools'
+      - 'zsh'
+      - 'tmux'
+      - 'snapd'
+      - 'python3-apt'
+      - 'python3-pip'
+      - 'ansible'
+      - 'xz-utils'
+      - 'net-tools'
+      - 'fortune'
+  tags:
+    - common
+    - apt
+
+- name: Update all packages to the latest version
+  apt:
+    upgrade: full
+  tags:
+    - common
+    - apt

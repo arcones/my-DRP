@@ -1,0 +1,10 @@
+---
+
+- include: apt.yml
+- include: zsh.yml
+- include: pip.yml
+- include: user_config.yml
+- include: conda.yml
+- include: awscli.yml
+- include: snaps.yml
+- include: tfenv.yml

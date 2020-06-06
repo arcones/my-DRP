@@ -1,0 +1,12 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+    -   id: check-yaml
+    -   id: detect-aws-credentials
+    -   id: detect-private-key
+-   repo: https://github.com/ansible/ansible-lint.git
+    rev: v4.2.0
+    hooks:
+    -   id: ansible-lint
+        files: \.(yaml|yml)$

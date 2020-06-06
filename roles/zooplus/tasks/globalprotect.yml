@@ -1,0 +1,28 @@
+---
+
+- name: Gather package facts
+  package_facts:
+    manager: auto
+  tags:
+    - zooplus 
+    - globalprotect
+
+- name: Copy globalprotect package
+  copy:
+    src: files/GlobalProtect_deb-5.1.0.0-101.deb
+    dest: /tmp/
+    mode: '0744'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  when: "'globalprotect' not in ansible_facts.packages"
+  tags:
+    - zooplus 
+    - globalprotect
+
+- name: Install globalprotect package
+  command: "dpkg -i /tmp/GlobalProtect_deb-5.1.0.0-101.deb"
+  when: "'globalprotect' not in ansible_facts.packages"
+  register: globalprotect_installation_check
+  tags:
+    - zooplus 
+    - globalprotect

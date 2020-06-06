@@ -1,0 +1,37 @@
+
+---
+
+- name: Check if awscli is installed
+  stat:
+    path: /usr/local/aws-cli
+  register: awscli_existence
+  tags:
+    - common
+    - awscli 
+
+- name: Download & unpack awscli installation script
+  unarchive:
+    src: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip
+    dest: "/tmp"
+    owner: "{{ user }}"
+    remote_src: yes
+  when: not awscli_existence.stat.exists
+  tags:
+    - common
+    - awscli 
+
+- name: Install awscli
+  command: sh /tmp/aws/install
+  register: awscli_installation
+  when: not awscli_existence.stat.exists
+  tags:
+    - common
+    - awscli 
+
+- name: Check awscli installation
+  command: aws --version
+  register: awscli_version
+  when: awscli_installation is succeeded
+  tags:
+    - common
+    - awscli

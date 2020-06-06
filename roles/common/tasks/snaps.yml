@@ -1,0 +1,32 @@
+---
+
+- name: Install snaps
+  snap:
+    name:
+      - beekeeper-studio
+      - firefox
+      - vlc
+      - postman
+      - zoom-client
+      - chromium
+      - gnome-calculator
+      - evince
+      - onlyoffice-ds
+      - canonical-livepatch
+      - ktube-media-downloader
+      - spotify
+  tags:
+    - common
+    - snaps 
+
+- name: Install classic snaps
+  snap:
+    name:
+      - slack
+      - skype
+      - sublime-text
+      - kubectl
+    classic: yes
+  tags:
+    - common
+    - snaps 

@@ -1,0 +1,36 @@
+---
+
+- name: Create common folders
+  file:
+    path: "{{ item }}"
+    state: directory
+    mode: '0744'
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  with_items:
+    - "/home/{{ user }}/code/github"
+    - "/home/{{ user }}/code/{{ company }}"
+  tags:
+    - common
+    - user_config
+
+- name: Copy wallpaper file
+  copy:
+    src: files/diverse_sponge_bob.jpg
+    dest: "/home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg"
+    mode: "0744"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags:
+    - common
+    - user_config
+
+- name: Set wallpaper
+  become: yes
+  become_user: "{{ user }}"
+  dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/.diverse_sponge_bob_wallpaper.jpg'"
+  tags:
+    - common
+    - user_config

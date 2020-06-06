@@ -1,0 +1,8 @@
+---
+
+- include: globalprotect.yml
+  vars:
+    globalprotect_package: GlobalProtect_deb-5.1.0.0-101.deb
+- include: teams.yml
+- include: conda_env.yml
+- include: apache_ds.yml

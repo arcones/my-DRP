@@ -4,31 +4,13 @@ services: docker
 
 env:
     - ANSIBLE_VERSION=latest
-    - ANSIBLE_VERSION=2.9.3
-    - ANSIBLE_VERSION=2.9.2
-    - ANSIBLE_VERSION=2.9.1
-    - ANSIBLE_VERSION=2.8.8
-    - ANSIBLE_VERSION=2.8.7
-    - ANSIBLE_VERSION=2.8.6
-    - ANSIBLE_VERSION=2.8.5
-    - ANSIBLE_VERSION=2.8.4
-    - ANSIBLE_VERSION=2.7.16
-    - ANSIBLE_VERSION=2.7.15
-    - ANSIBLE_VERSION=2.7.5
-    - ANSIBLE_VERSION=2.7.4
-    - ANSIBLE_VERSION=2.6.11
-    - ANSIBLE_VERSION=2.6.10
-    - ANSIBLE_VERSION=2.6.9
-    - ANSIBLE_VERSION=2.5.14
-    - ANSIBLE_VERSION=2.5.13
+    - ANSIBLE_VERSION=2.9.8
 
 install:
-    # Install test dependencies.
     - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible ; else pip install ansible==$ANSIBLE_VERSION; fi
     - pip install ansible-lint
 
 script:
-    # Run tests.
-    - ansible-lint site.yml
+    - ansible-lint playbook.yml
     - ansible-playbook --version
-    - ansible-playbook -i hosts site.yml
+    - ansible-playbook -i inventory playbook.yml

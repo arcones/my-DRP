@@ -1,5 +1,9 @@
 ---
+
 - hosts: all
   become: yes
   roles:
-    - role: DRP
+    - common
+    - zooplus
+  vars:
+    company: zooplus

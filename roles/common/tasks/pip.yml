@@ -1,0 +1,9 @@
+
+---
+
+- name: Install pip packages
+  pip:
+    name: psutil
+  tags:
+    - common
+    - pip 

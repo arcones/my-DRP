@@ -1,0 +1,37 @@
+
+---
+
+- name: Check if conda is installed
+  stat:
+    path: /home/{{ user }}/miniconda3/bin/conda
+  register: conda_existence
+  tags:
+    - common
+    - conda 
+
+- name: Download miniconda installation script
+  get_url:
+    url: https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    dest: /tmp/Miniconda3-latest-Linux-x86_64.sh
+    mode: '0744'
+  when: not conda_existence.stat.exists
+  tags:
+    - common
+    - conda 
+
+- name: Install miniconda
+  command: sh /tmp/Miniconda3-latest-Linux-x86_64.sh -b -p /home/{{ user }}/miniconda3
+  register: conda_installation_check
+  when: not conda_existence.stat.exists
+  tags:
+    - common
+    - conda 
+
+- name: Check conda installation #Add conda to the path!!
+  become: yes
+  become_user: "{{ user }}"
+  command:  /home/{{ user }}//miniconda3/bin/conda --version
+  when: conda_installation_check is succeeded
+  tags:
+    - common
+    - conda 
