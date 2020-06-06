@@ -11,6 +11,7 @@ apt install -y openssh-server
 
 # Ensure ssh is running
 systemctl status ssh --no-pager
+systemctl enable ssh
 if [ $? -eq 0 ]; then
     echo "ssh server is running"
 else
