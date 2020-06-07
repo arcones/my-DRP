@@ -4,8 +4,7 @@ dist: bionic
 language: python
 
 env:
-    - ANSIBLE_VERSION=2.9.9
-    - VAGRANT_VERSION=2.2.9
+    - ANSIBLE_VERSION=2.9.9 VAGRANT_VERSION=2.2.9
 
 install:
 
