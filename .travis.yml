@@ -20,4 +20,4 @@ install:
     - vagrant plugin install vagrant-libvirt
 
 script:
-    - vagrant up --provider=libvirt
+    - sudo vagrant up --provider=libvirt
