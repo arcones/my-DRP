@@ -20,4 +20,6 @@ install:
     - vagrant plugin install vagrant-libvirt
 
 script:
+    - ansible --version
+    - sudo ansible --version
     - sudo vagrant up --provider=libvirt
