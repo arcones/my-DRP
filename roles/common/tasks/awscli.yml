@@ -7,7 +7,7 @@
   register: awscli_existence
   tags:
     - common
-    - awscli 
+    - awscli
 
 - name: Download & unpack awscli installation script
   unarchive:
@@ -18,7 +18,7 @@
   when: not awscli_existence.stat.exists
   tags:
     - common
-    - awscli 
+    - awscli
 
 - name: Install awscli
   command: sh /tmp/aws/install
@@ -26,7 +26,7 @@
   when: not awscli_existence.stat.exists
   tags:
     - common
-    - awscli 
+    - awscli
 
 - name: Check awscli installation
   command: aws --version

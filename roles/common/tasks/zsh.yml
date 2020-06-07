@@ -23,7 +23,7 @@
     - common
     - zsh
 
-- name: Give permissions on the folder 
+- name: Give permissions on the folder
   file:
     path: "/home/{{ user }}/.oh-my-zsh"
     owner: "{{ user }}"
@@ -40,4 +40,4 @@
     shell: /bin/zsh
   tags:
     - common
-    - zsh 
+    - zsh
