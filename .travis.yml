@@ -14,10 +14,10 @@ install:
     - pip install ansible-lint
     
     # Install libvirt, vagrant and friends
-    #- sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+    - sudo apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
     - wget -nv https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb
     - sudo dpkg -i vagrant_${VAGRANT_VERSION}_x86_64.deb
-    #- vagrant plugin install vagrant-libvirt
+    - vagrant plugin install vagrant-libvirt
 
 script:
-    - vagrant up
+    - vagrant up --provider=libvirt
