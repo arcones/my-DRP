@@ -25,7 +25,6 @@
       - 'dconf-editor'
       - 'dconf-cli'
       - 'unzip'
-      - 'ubuntu-desktop'
   tags:
     - common
     - apt
