@@ -10,7 +10,7 @@ env:
 install:
 
     # Install ansible, as the control node will be the base VM on which build is running
-    - pip install ansible==${ANSIBLE_VERSION}
+    - sudo pip install ansible==${ANSIBLE_VERSION}
     - pip install ansible-lint
     
     # Install libvirt, vagrant and friends
@@ -20,6 +20,5 @@ install:
     - vagrant plugin install vagrant-libvirt
 
 script:
-    - ansible --version
     - sudo ansible --version
     - sudo vagrant up --provider=libvirt
