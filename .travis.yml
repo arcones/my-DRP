@@ -20,6 +20,6 @@ install:
 
 script:
     - ansible-lint playbook.yml
-    - ansible-playbook -i host playbook.yml
-    - vagrant up --provider=libvirt
+    - ansible-playbook -i hosts playbook.yml
+    - sudo vagrant up --provider=libvirt
     - vagrant ssh -c "echo 'hello world!'"
