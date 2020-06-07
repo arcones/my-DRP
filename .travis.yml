@@ -1,16 +1,26 @@
 ---
+
+dist: bionic
 language: python
-services: docker
 
 env:
-    - ANSIBLE_VERSION=latest
-    - ANSIBLE_VERSION=2.9.8
+    - ANSIBLE_VERSION=2.9.9
+    - VAGRANT_VERSION=2.2.9
 
 install:
-    - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible ; else pip install ansible==$ANSIBLE_VERSION; fi
+
+    # Install ansible, as the control node will be the base VM on which build is running
+    - pip install ansible==$ANSIBLE_VERSION
     - pip install ansible-lint
+    
+    # Install libvirt, vagrant and friends
+    - apt-get update && sudo apt-get install -y bridge-utils dnsmasq-base ebtables libvirt-bin libvirt-dev qemu-kvm qemu-utils ruby-dev
+    - wget -nv https://releases.hashicorp.com/vagrant/$VAGRANT_VERSION/vagrant_$VAGRANT_VERSION_x86_64.deb
+    - dpkg -i vagrant_$VAGRANT_VERSION_x86_64.deb
+    - vagrant plugin install vagrant-libvirt
 
 script:
     - ansible-lint playbook.yml
-    - ansible-playbook --version
-    - ansible-playbook -i inventory playbook.yml
+    - ansible-playbook -i host playbook.yml
+    - vagrant up --provider=libvirt
+    - vagrant ssh -c "echo 'hello world!'"

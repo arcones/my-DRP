@@ -7,6 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "playbook.yml"
+    ansible.compatibility_mode = "auto"
     ansible.extra_vars = {
       user: "vagrant"
     }

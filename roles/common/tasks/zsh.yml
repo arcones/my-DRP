@@ -1,14 +1,12 @@
 ---
 
-- name: Copy dotfiles
-  copy:
-    src: "files/{{ item }}"
-    dest: "/home/{{ user }}/{{ item }}"
-    mode: '0611'
+- name: Copy .zshrc
+  template:
+    src: "templates/zshrc.j2"
+    dest: "/home/{{ user }}/.zshrc"
+    mode: '0644'
     owner: "{{ user }}"
     group: "{{ user }}"
-  with_items:
-    - ".zshrc"
   tags:
     - common
     - zsh
