@@ -21,6 +21,8 @@
       - 'xz-utils'
       - 'net-tools'
       - 'fortune'
+      - 'virtualbox'
+      - 'dconf-editor'
   tags:
     - common
     - apt
