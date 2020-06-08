@@ -6,4 +6,4 @@
     name: psutil
   tags:
     - common
-    - pip 
+    - pip

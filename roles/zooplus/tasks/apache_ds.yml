@@ -7,12 +7,12 @@
     name:
       - 'apacheds'
   tags:
-    - zooplus 
+    - zooplus
     - apache_ds
 
 - name: Update all packages to the latest version
   apt:
     upgrade: full
   tags:
-    - zooplus 
+    - zooplus
     - apache_ds

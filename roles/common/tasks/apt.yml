@@ -21,6 +21,10 @@
       - 'xz-utils'
       - 'net-tools'
       - 'fortune'
+      - 'virtualbox'
+      - 'dconf-editor'
+      - 'dconf-cli'
+      - 'unzip'
   tags:
     - common
     - apt

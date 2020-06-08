@@ -7,7 +7,7 @@
   register: conda_existence
   tags:
     - common
-    - conda 
+    - conda
 
 - name: Download miniconda installation script
   get_url:
@@ -17,7 +17,7 @@
   when: not conda_existence.stat.exists
   tags:
     - common
-    - conda 
+    - conda
 
 - name: Install miniconda
   command: sh /tmp/Miniconda3-latest-Linux-x86_64.sh -b -p /home/{{ user }}/miniconda3
@@ -25,7 +25,7 @@
   when: not conda_existence.stat.exists
   tags:
     - common
-    - conda 
+    - conda
 
 - name: Check conda installation #Add conda to the path!!
   become: yes
@@ -34,4 +34,4 @@
   when: conda_installation_check is succeeded
   tags:
     - common
-    - conda 
+    - conda
