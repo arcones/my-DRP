@@ -16,7 +16,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 else
     hostname="$1"
     IP="$2"
-    print "A target node named $hostname with IP $IP will be configured for provisioning with ansible\n"
+    printf "A target node named $hostname with IP $IP will be configured for provisioning with ansible\n"
 fi
 
 # Remove prossible leftovers from know_hosts
