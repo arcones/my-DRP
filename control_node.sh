@@ -16,4 +16,4 @@ systemctl stop NetworkManager.service
 systemctl start NetworkManager.service
 
 # Send ssh key to the target
-sudo -u arcones -- ssh-copy-id -o towanda
+sudo -u arcones -- ssh-copy-id towanda
