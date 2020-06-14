@@ -1,0 +1,7 @@
+1) Setup LivePatch Canonical
+2) Set disabled "Help improve Ubuntu"
+3) Set disabled Location services
+
+5) Add known_hosts with bitbucket and github
+
+7) Add script to clone all bitbucket
