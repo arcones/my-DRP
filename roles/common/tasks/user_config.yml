@@ -34,3 +34,11 @@
   tags:
     - common
     - user_config
+
+- name: Copy monitors config
+  copy:
+    src: files/monitors.xml
+    dest: "/home/{{ user }}/.config/monitors.xml"
+  tags:
+    - common
+    - user_config
