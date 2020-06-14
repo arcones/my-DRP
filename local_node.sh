@@ -9,33 +9,25 @@ if [ "$EUID" != 0 ]; then
     echo 'This script must be run as root'
     exit 1
 fi
-echo 'Done'
 
 echo 'Checking script arguments...'
 if [ -z "$1" ]; then
     echo 'You should provide the password of ansible user as argument for this script'
-    echo 'Ansible user will be used to provision your Ubuntu OS'
-    echo 'Example: ./target_node mySuperStrongPassword'
+    echo 'Example:  sudo ./local_node mySuperStrongPassword'
     exit 1
 else
     password="$1"
     echo 'Password received'
 fi
+
 echo 'Done'
 
 echo 'Installing required dependencies...'
-apt update 2>/dev/null && apt install -y openssh-server
+apt update 2>/dev/null && apt install -y software-properties-common python3 python3-pip
 echo 'Done'
 
-echo 'Launching ssh service...'
-systemctl status ssh --no-pager
-systemctl enable ssh
-
-if [ $? -eq 0 ]; then
-    echo "ssh server is running"
-else
-   systemctl stargnot ssh
-fi
+echo 'Installing ansible...'
+pip3 install ansible
 echo 'Done'
 
 echo 'Creating user ansible to provision...'
@@ -44,12 +36,8 @@ useradd -m ansible
 echo -e "$password\n$password" | passwd ansible
 echo 'Done'
 
-echo 'Opening firewall to allow ssh connections...'
-ufw allow ssh
-echo 'Done'
-
 echo 'Append ansible user to sudoers not to have to provide the password while provisioning remotely...'
 (echo ; echo 'ansible      ALL=(ALL)       NOPASSWD: ALL') >> /etc/sudoers
 echo 'Done'
 
-echo 'Preparation is done, this node is configured as target for ansible!'
+echo 'Preparation is done, you can run ansible locally now!'

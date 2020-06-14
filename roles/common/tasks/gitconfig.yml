@@ -1,0 +1,18 @@
+
+---
+
+- name: Copy git configuration
+  copy:
+    src: files/.gitconfig
+    dest: "/home/{{ user }}/.gitconfig"
+  tags:
+    - common
+    - git
+
+- name: Copy github git configuration
+  copy:
+    src: files/.gitconfig-github
+    dest: "/home/{{ user }}/code/github/.gitconfig-github"
+  tags:
+    - common
+    - git

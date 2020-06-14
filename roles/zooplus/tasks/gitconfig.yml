@@ -1,0 +1,8 @@
+
+- name: Copy zooplus git configuration
+  copy:
+    src: "files/.gitconfig-{{ company }}"
+    dest: "/home/{{ user }}/code/{{ company }}/.gitconfig-{{ company }}"
+  tags:
+    - zooplus
+    - git 

@@ -1,0 +1,4 @@
+[includeIf "gitdir:~/code/zooplus"]
+  path = .gitconfig-zooplus
+[includeIf "gitdir:~/code/github"]
+  path = .gitconfig-github

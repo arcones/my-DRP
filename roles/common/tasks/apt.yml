@@ -25,6 +25,7 @@
       - 'dconf-editor'
       - 'dconf-cli'
       - 'unzip'
+      - 'highlight'
   tags:
     - common
     - apt

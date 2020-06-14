@@ -3,7 +3,10 @@
 
 - name: Install pip packages
   pip:
-    name: psutil
+    name: 
+      - psutil
+      - Pygments
+      - ansible
   tags:
     - common
     - pip
