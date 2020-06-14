@@ -19,7 +19,7 @@ if [ -z "$1" ] || [ -z "$2" ]; then
 else
     hostname="$1"
     IP="$2"
-    echo 'A target node named $hostname with IP $IP will be configured for provisioning with ansible'
+    echo "A target node named $hostname with IP $IP will be configured for provisioning with ansible"
 fi
 echo 'Done'
 
@@ -39,7 +39,7 @@ useradd -m ansible && passwd -d ansible
 echo 'Done'
 
 echo 'Creating ssh key for ansible user...'
-KEY_FILE='/home/ansible/.ssh/ansible.rsa'
+KEY_FILE='/home/ansible/.ssh/id_rsa'
 su - ansible -c "ssh-keygen -t rsa -N '' -f $KEY_FILE <<< y"
 echo 'Done'
 
@@ -49,8 +49,5 @@ systemctl stop NetworkManager.service
 systemctl start NetworkManager.service
 echo 'Done'
 
-echo 'Copying ansible user ssh key to the target node...'
-su - ansible -c "ssh-copy-id -i $KEY_FILE $hostname"
-echo 'Done'
-
 echo 'Preparation is done, ansible provisioning will be controlled from this node!'
+echo "Now login as ansible with \"su - ansible\" and copy ansible's ssh key to the target node with the command: \"ssh-copy-id -f $hostname\""
