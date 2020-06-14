@@ -13,13 +13,13 @@ echo 'Done'
 
 echo 'Checking script arguments...'
 if [ -z "$1" ] || [ -z "$2" ]; then
-    printf "You should provide the hostname and the IP of the target node as argument for this script\n"
-    printf "Example: ./control_node towanda 192.168.0.11\n"
+    echo 'You should provide the hostname and the IP of the target node as argument for this script'
+    echo 'Example: ./control_node towanda 192.168.0.11'
     exit 1
 else
     hostname="$1"
     IP="$2"
-    printf "A target node named $hostname with IP $IP will be configured for provisioning with ansible\n"
+    echo 'A target node named $hostname with IP $IP will be configured for provisioning with ansible'
 fi
 echo 'Done'
 
@@ -52,3 +52,5 @@ echo 'Done'
 echo 'Copying ansible user ssh key to the target node...'
 su - ansible -c "ssh-copy-id -i $KEY_FILE $hostname"
 echo 'Done'
+
+echo 'Preparation is done, ansible provisioning will be controlled from this node!'

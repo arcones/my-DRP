@@ -67,7 +67,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git emoji aws docker battery chucknorris colorize copydir copyfile docker-compose extract fastfile pip sudo terraform z)
+plugins=(git emoji aws docker battery chucknorris copydir copyfile docker-compose extract fastfile pip sudo terraform z)
 RPROMPT='$(battery_pct_prompt)'
 source $ZSH/oh-my-zsh.sh
 
@@ -82,9 +82,11 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# Add place of pip binaries to the Path
+export PATH="$HOME/.local/bin:$PATH"
+
 # Colorize common commands
-alias ccat='cat'
-alias cless='less'
+alias cat='pygmentize -O style=monokai -f console256 -g'
 
 # Tfenv Path
 export PATH="$HOME/.tfenv/bin:$PATH"
@@ -105,8 +107,3 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
-
-# SDKMan
-export SDKMAN_DIR="/home/{{ user }}/.sdkman"
-[[ -s "/home/{{ user }}/.sdkman/bin/sdkman-init.sh" ]] && source "/home/{{ user }}/.sdkman/bin/sdkman-init.sh"
-

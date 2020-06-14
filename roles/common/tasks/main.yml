@@ -8,3 +8,4 @@
 - include: awscli.yml
 - include: snaps.yml
 - include: tfenv.yml
+- include: gitconfig.yml

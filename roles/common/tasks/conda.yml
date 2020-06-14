@@ -27,7 +27,7 @@
     - common
     - conda
 
-- name: Check conda installation #Add conda to the path!!
+- name: Check conda installation #TODO Add conda to the path!!
   become: yes
   become_user: "{{ user }}"
   command:  /home/{{ user }}//miniconda3/bin/conda --version
