@@ -53,21 +53,21 @@
     - common
     - user_config
 
-- name: Fetch all user's GitHub public repos
-  command:
-    cmd: "curl -s https://api.github.com/users/milanboers/repos | grep \"clone_url\" | awk '{print $2}'  | tr -d \" | tr -d ,"
-  register: public_repos
-  tags:
-    - common
-    - user_config
-
-  vars:
-    github_repos: []
-
-- name: Print the security group names to the console.
-  debug: var=public_repos
-
-- name: Build a list of all the github repos
-  set_fact:
-    github_repos: "{{ github_repos }} + [ '{{ item.group_name }}' ]"
-  with_items: "{{ public_repos }}"
+      #- name: Fetch all user's GitHub public repos
+      #  command:
+      #    cmd: "curl -s https://api.github.com/users/milanboers/repos | grep \"clone_url\" | awk '{print $2}'  | tr -d \" | tr -d ,"
+      #  register: public_repos
+      #  tags:
+      #    - common
+      #    - user_config
+      #
+      #  vars:
+      #    github_repos: []
+      #
+      #- name: Print the security group names to the console.
+      #  debug: var=public_repos
+      #
+      #- name: Build a list of all the github repos
+      #  set_fact:
+      #    github_repos: "{{ github_repos }} + [ '{{ item.group_name }}' ]"
+      #  with_items: "{{ public_repos }}"
