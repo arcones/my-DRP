@@ -5,4 +5,4 @@
     dest: "/home/{{ user }}/code/{{ company }}/.gitconfig-{{ company }}"
   tags:
     - zooplus
-    - git 
+    - git
