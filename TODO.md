@@ -1,10 +1,18 @@
 ## TODOs
-- Clone all repositories (github & bitbucket), known_hosts BB & Github
-- SSH config with vault
-- Missing configs: path tfenv etc, motd, minimum version of zsh history, customize tray, canonical livepatch config, firefox/chrome sync, wifi config, avatar. java, maven as done in docker images. sdkman?
-- Templatize zshrc
+
+### Urgent
+- Fix build
+- Add known_hosts with bitbucket and github
+- Script to clone all github and all bitbucket
+- gitconfig doesn't work
+
+### Normal
+- SSH config with Vault
+- zsh history
 - Add and templatize pip.conf
-- WTF is happening with the precommits? sh to format with same quotes, etc!!!
-- E2E check like vagrant ssh -- -t 'cd /var/www; /bin/bash'
-- Automate manual actions: Setup LivePatch Canonical, Set disabled "Help improve Ubuntu",  Set disabled Location services
+- Missing configs: path tfenv etc, motd, firefox/chrome sync, wifi config, avatar. java, maven as done in docker images. sdkman?
+- WTF is happening with the precommits? sh linter to format with same quotes, etc!!! ensure automatic linter as black!
+- E2E tests like vagrant ssh -- -t 'docker --version'
+- LivePatch Canonical, "Help improve Ubuntu", Location services
+- Customize tray
 - Final version of README

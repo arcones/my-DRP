@@ -9,10 +9,25 @@ if [ "$EUID" != 0 ]; then
     echo 'This script must be run as root'
     exit 1
 fi
+
+echo 'Checking script arguments...'
+if [ -z "$1" ]; then
+    echo 'You should provide the password of ansible user as argument for this script'
+    echo 'Example:  sudo ./local_node mySuperStrongPassword'
+    exit 1
+else
+    password="$1"
+    echo 'Password received'
+fi
+
 echo 'Done'
 
 echo 'Installing required dependencies...'
-apt update 2>/dev/null && apt install -y python3 ansible
+apt update 2>/dev/null && apt install -y software-properties-common python3 python3-pip
+echo 'Done'
+
+echo 'Installing ansible...'
+pip3 install ansible
 echo 'Done'
 
 echo 'Creating user ansible to provision...'
