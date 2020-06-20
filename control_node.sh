@@ -49,9 +49,13 @@ systemctl stop NetworkManager.service
 systemctl start NetworkManager.service
 echo 'Done'
 
+echo 'Copying ansible project in /home/ansible'
+cp -R ../my-DRP /home/ansible/my-DRP
+chown -R ansible:ansible /home/ansible/my-DRP
+echo 'Done'
+
 echo 'Preparation is done, ansible provisioning will be controlled from this node!'
-echo 'Now you should:'
-echo "Copy my-DRP folder to ansible's user home directory with: \"cp -r my-DRP /home/ansible/\""
-echo 'Login as ansible with "su - ansible"'
-echo "Copy ansible's ssh key to the target node with the command: \"ssh-copy-id -f $hostname\""
-echo 'Execute the playbook with \"ansible-playbook playbook.yml -i hosts -u ansible -e user=jdoe\"'
+echo "Now login as ansible with:"
+echo "su - ansible"
+echo "and copy ansible's ssh key to the target node with the command:"
+echo "ssh-copy-id -f $hostname"
