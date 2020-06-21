@@ -1,13 +1,12 @@
 ## TODOs
 
 ### Urgent
-- Fix build
 - Add known_hosts with bitbucket and github
+- SSH config with Vault
 - Script to clone all github and all bitbucket
 - gitconfig doesn't work
 
 ### Normal
-- SSH config with Vault
 - zsh history
 - Add and templatize pip.conf
 - Missing configs: path tfenv etc, motd, firefox/chrome sync, wifi config, avatar. java, maven as done in docker images. sdkman?
