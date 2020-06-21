@@ -16,7 +16,10 @@ A Vagrantfile is prepared to test the playbook inside the VM that will be launch
 ```
 vagrant up # This will boot the Ubuntu virtual machine and run the playbook
 
-vagrant provision # To rerun the playbook
+vagrant provision # To rerun the whole playbook
+
+# To rerun some tags:
+ansible-playbook playbook.yml -i .vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory -u ansible -e user=vagrant -t user_config
 
 vagrant destroy # To tear down the virtual machine
 ```
