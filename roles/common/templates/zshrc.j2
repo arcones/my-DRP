@@ -91,6 +91,10 @@ alias cat='pygmentize -O style=monokai -f console256 -g'
 # Tfenv Path
 export PATH="$HOME/.tfenv/bin:$PATH"
 
+# Add common identity to ssh-agent
+eval $(ssh-agent -s)
+ssh-add ~/.ssh/common
+
 # Miniconda
 export PATH=$HOME/miniconda3/bin:$PATH
 # >>> conda initialize >>>

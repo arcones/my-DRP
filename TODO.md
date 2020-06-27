@@ -2,7 +2,6 @@
 
 ### Urgent
 - Add known_hosts with bitbucket and github
-- SSH config with Vault
 - Script to clone all github and all bitbucket
 - gitconfig doesn't work
 
@@ -15,3 +14,4 @@
 - LivePatch Canonical, "Help improve Ubuntu", Location services
 - Customize tray
 - Final version of README
+- Misterious .z

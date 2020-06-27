@@ -1,5 +1,6 @@
 ---
 
+- include: keys.yml
 - include: apt.yml
 - include: zsh.yml
 - include: pip.yml
@@ -9,3 +10,4 @@
 - include: snaps.yml
 - include: tfenv.yml
 - include: gitconfig.yml
+  #- include: github.yml
